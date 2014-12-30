@@ -1,0 +1,1 @@
+pbpaste | highlight --syntax=$1 -O rtf $2 | pbcopy
