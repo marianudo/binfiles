@@ -1,0 +1,22 @@
+#!/bin/bash
+# Define group id for our artifact
+group_id="com.packlink"
+
+# Create project from basic archetype
+mvn archetype:generate -B -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.0 -DgroupId=$group_id -DartifactId=$1 -Dversion=1.0.0-SNAPSHOT
+
+# Generate .gitignore for IDEs integration and remove crappy archetype generated sample code
+cd $1
+printf "\n.classpath\n.project\n.settings\ntarget\nlog/\n*.log\n*.iml\n.idea\n" > .gitignore
+rm src/main/java/$group_id/App.java
+rm src/test/java/$group_id/AppTest.java
+
+# Create maven site template
+mkdir -p src/site/apt
+echo "Write your documentation here" > src/site/apt/index.apt
+
+# Create local git repository for project and standard flow branches
+git init
+git add -A
+git commit -m 'Project creation'
+
