@@ -1,0 +1,2 @@
+#!/bin/bash
+printf "\n.classpath\n.project\n.settings\ntarget\nlog/\n*.log\n*.iml\n.idea\n" >> .gitignore
